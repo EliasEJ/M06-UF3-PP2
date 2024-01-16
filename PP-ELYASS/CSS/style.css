@@ -18,9 +18,9 @@
   -webkit-align-items: flex-start;
   -ms-flex-align: start;
   align-items: flex-start;
-  background: #999;
   margin: 15px;
   padding-right: 5px;
+  border: 1px solid #000;
 }
 
 .flex-item {
@@ -33,6 +33,6 @@
   -webkit-align-self: auto;
   -ms-flex-item-align: auto;
   align-self: auto;
-  background: #99f;
+  text-align: center;
   margin: 5px 0 5px 5px;
 }
