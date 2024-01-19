@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script defer src="JS/controlador.js"></script>
     <link rel="stylesheet" href="CSS/style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <title>Màquina automàtica</title>
@@ -14,27 +15,27 @@
         <div class="flex-item">
             <h1>IMPORT</h1>
             <div class="panelCalc">
-                <input type="text" name="panel" id="panel" disabled>
+                <input type="text" name="panel" id="panel" disabled placeholder="0,00 €">
                 <hr>
                 <div class="flex-item">
-                    <button class="flex-item bttnsCalc">7</button>
-                    <button class="flex-item bttnsCalc">8</button>
-                    <button class="flex-item bttnsCalc">9</button>
+                    <button class="flex-item bttnsCalc" value="7">7</button>
+                    <button class="flex-item bttnsCalc" value="8">8</button>
+                    <button class="flex-item bttnsCalc" value="9">9</button>
                 </div>
                 <div class="flex-item">
-                    <button class="flex-item bttnsCalc">4</button>
-                    <button class="flex-item bttnsCalc">5</button>
-                    <button class="flex-item bttnsCalc">6</button>
+                    <button class="flex-item bttnsCalc" value="4">4</button>
+                    <button class="flex-item bttnsCalc" value="5">5</button>
+                    <button class="flex-item bttnsCalc" value="6">6</button>
                 </div>
                 <div class="flex-item">
-                    <button class="flex-item bttnsCalc">1</button>
-                    <button class="flex-item bttnsCalc">2</button>
-                    <button class="flex-item bttnsCalc">3</button>
+                    <button class="flex-item bttnsCalc" value="1">1</button>
+                    <button class="flex-item bttnsCalc" value="2">2</button>
+                    <button class="flex-item bttnsCalc" value="3">3</button>
                 </div>
                 <div class="flex-item">
-                    <button class="flex-item bttnsCalc">,</button>
-                    <button class="flex-item bttnsCalc">0</button>
-                    <button class="flex-item bttnsCalc">-</button>
+                    <button class="flex-item bttnsCalc" value=",">,</button>
+                    <button class="flex-item bttnsCalc" value="0">0</button>
+                    <button class="flex-item bttnsCalc" value="Backspace">⌫</button>
                 </div>
             </div>
 
@@ -159,7 +160,7 @@
             <div class="flex-item monedas">
                 <img src="IMG/1C.png" alt="1 CENTS">
                 <br>
-                <input type="number">
+                <input type="number" value="10">
             </div>
         </div>
     </div>
