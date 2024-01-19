@@ -35,6 +35,9 @@ pathElements.forEach(function(pathElement) {
     // Asigna el id del elemento 'path' como el texto del botón
     newButton.innerText = pathElement.id;
 
+    // Añadir un name al botón 
+    newButton.setAttribute('name', 'botonMapa' + pathElement.id);
+
     // Hace el botón arrastrable
     newButton.setAttribute('draggable', 'true');
     
@@ -81,6 +84,9 @@ pathElements.forEach(function(pathElement) {
         if (draggedButtonId === pathElement.id) {
             // Cambia el color del 'path' a verde
             pathElement.style.fill = 'green';
+
+            // Elimina el botón arrastrado por el name
+            document.getElementsByName('botonMapa' + draggedButtonId)[0].remove();
         } else {
             // Cambia el color del 'path' a rojo
             pathElement.style.fill = 'red';
