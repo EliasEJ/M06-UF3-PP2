@@ -20,6 +20,8 @@
   align-items: flex-start;
   margin: 15px;
   padding-right: 5px;
+  width: 90%;
+
 }
 
 .flex-item {
@@ -36,58 +38,42 @@
   margin: 5px 0 5px 5px;
 }
 
-.panelCalc {
-  margin-top: 20px;
-  padding: 5px;
-}
-
-.panelCalc input {
-  width: 42%;
-  height: 60px;
-  margin: 5px;
-  padding-left: 5px;
-  font-size: 20px;
-  text-align: right;
-  border-radius: 0.2cap;
-  background-color: #2222;
-
-}
-
-.bttnsCalc {
-  width: 80px;
-  height: 70px;
-  margin: 5px;
-  background-color: #fff;
-  font-size: 20px;
+.titulo {
+  font-size: 1.5em;
   font-weight: bold;
-  cursor: pointer;
-  border-radius: 0.2cap;
+  text-align: center;
+  margin: 100px 0 5px 5px;
 }
 
-.bttnsCalc:hover {
-  background-color: #2222;
-  color: #222222;
+.botones {
+  text-align: center;
+  margin: 20px 0 5px 5px;
 }
 
-.billetes img {
-  width: 150px;
-}
-
-.monedas img{
-  width: 80px;
-}
-
-.pagament input {
-  margin-top: 20px;
-  padding: 5px;
-  background-color: #2222;
-  width: 96%;
-  height: 70px;
-  text-align: right;
-}
-
-.panelCanvi {
-  padding-left: 50px;
-  text-align: left;
+.bttns {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 10px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
   font-size: 20px;
+  margin: 5px 5px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.mapa {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin: 5px 0 5px 5px;
+}
+
+.botonMapa {
+  border: none;
+  padding: 10px 10px;
+  margin: 5px 5px;
+  cursor: pointer;
 }
