@@ -19,37 +19,37 @@ catalunyaBoton.click(() => {
 
 
 // Selecciona todos los elementos 'path' dentro de SVG por su id
-var pathElements = document.querySelectorAll('svg path[id]');
+let pathElements = document.querySelectorAll('svg path[id]');
 
 // Para cada elemento 'path'...
 pathElements.forEach(function(pathElement) {
     // Crea un nuevo botón
-    var newButton = document.createElement('button');
+    let nouBoto = document.createElement('button');
     
     // Asigna el id del elemento 'path' como el id del botón
-    newButton.id = pathElement.id;
+    nouBoto.id = pathElement.id;
 
     // Asigna la clase "botonMapa" al botón
-    newButton.className = 'botonMapa btn btn-primary';
+    nouBoto.className = 'botonMapa btn btn-primary';
     
     // Asigna el id del elemento 'path' como el texto del botón
-    newButton.innerText = pathElement.id;
+    nouBoto.innerText = pathElement.id;
 
     // Añadir un name al botón 
-    newButton.setAttribute('name', 'botonMapa' + pathElement.id);
+    nouBoto.setAttribute('name', 'botonMapa' + pathElement.id);
 
     // Hace el botón arrastrable
-    newButton.setAttribute('draggable', 'true');
+    nouBoto.setAttribute('draggable', 'true');
     
     // Inserta el botón en el div con id "botonesDrag"
-    document.getElementById('botonesDrag').appendChild(newButton);
+    document.getElementById('botonesDrag').appendChild(nouBoto);
 });
 
 
 
 // Para cada elemento 'path'...
 pathElements.forEach(function(pathElement) {
-    var originalColor = pathElement.style.fill; // Guarda el color original
+    let colorOriginal = pathElement.style.fill; // Guarda el color original
 
     // Agrega un evento de escucha para el evento "dragenter"
     pathElement.addEventListener('dragenter', function(event) {
@@ -63,7 +63,7 @@ pathElements.forEach(function(pathElement) {
     pathElement.addEventListener('dragleave', function(event) {
         // Si el color del 'path' no es verde, cambia el color al original
         if (pathElement.style.fill !== 'green' && pathElement.style.fill !== 'red') {
-            pathElement.style.fill = originalColor;
+            pathElement.style.fill = colorOriginal;
         }
     });
 
@@ -78,7 +78,7 @@ pathElements.forEach(function(pathElement) {
         }
 
         // Obtiene el id del botón arrastrado
-        var draggedButtonId = event.dataTransfer.getData('text');
+        let draggedButtonId = event.dataTransfer.getData('text');
 
         // Comprueba si el id del botón coincide con el id del 'path'
         if (draggedButtonId === pathElement.id) {

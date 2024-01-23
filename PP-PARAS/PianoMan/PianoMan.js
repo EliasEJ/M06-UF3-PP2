@@ -16,7 +16,6 @@ function elementAudio(){
 
 function init() {
 	TouchEmulator();
-
 }
 
 init();
