@@ -117,6 +117,7 @@ function init() {
 	//TouchEmulator();
 	elementAudio();
 	soAudio();
+	processarTeclesP();
 }
 
 init();
