@@ -44,6 +44,7 @@ function soAudio(){
             }
         });
     }
+	/*
 	//Aqui, les lletres K, L i Ñ sonenr les mateixes notes que R, T i Y, i les tecles Q, W i E, les mateixes que G, H i J.
     document.addEventListener("keypress", function(event){
 		let majuscula = event.key.toUpperCase();
@@ -51,12 +52,12 @@ function soAudio(){
             case "K":
             case "L":
             case "Ñ":
-                soAudio(["c2.mp3", "d2.mp3", "e2.mp3"]);
+                playSo(["c2.mp3", "d2.mp3", "e2.mp3"]);
                 break;
             case "Q":
             case "W":
             case "E":
-                soAudio(["g1.mp3", "a1.mp3", "b1.mp3"]);
+                playSo(["g1.mp3", "a1.mp3", "b1.mp3"]);
                 break;
             default:
                 let keyIndex = arrayLletres.indexOf(majuscula);
@@ -66,7 +67,35 @@ function soAudio(){
                 break;
         }
     });
+	*/
+	document.addEventListener("keypress", function(event) {
+		if(event.key == "K"){
+			let audio1 = document.getElementById("c2.mp3");
+			audio1.play();
+		}
+		if(event.key == "L"){
+			let audio1 = document.getElementById("d2.mp3");
+			audio1.play();
+		}
+		if(event.key == "Ñ"){
+			let audio1 = document.getElementById("e2.mp3");
+			audio1.play();
+		}
+		if(event.key == "Q"){
+			let audio1 = document.getElementById("g1.mp3");
+			audio1.play();
+		}
+		if(event.key == "W"){
+			let audio1 = document.getElementById("a1.mp3");
+			audio1.play();
+		}
+		if(event.key == "E"){
+			let audio1 = document.getElementById("b1.mp3");
+			audio1.play();
+		}
+	});
 }
+
 // Creem aquest objecte per saber quina tecla s'ha esta pressionant
 let teclesPressades = {};
  
@@ -111,13 +140,13 @@ $(".tecla").on("mouseup touchend", function(){
 				soAudio([`${audios[i]}`]);
 			}
 		}
-	}
+	} 
 
 function init() {
 	//TouchEmulator();
 	elementAudio();
 	soAudio();
-	processarTeclesP();
+	//processarTeclesP();
 }
 
 init();
