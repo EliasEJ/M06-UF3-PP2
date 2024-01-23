@@ -69,27 +69,27 @@ function soAudio(){
     });
 	*/
 	document.addEventListener("keypress", function(event) {
-		if(event.key == "K"){
+		if(event.key.toUpperCase() == "K"){
 			let audio1 = document.getElementById("c2.mp3");
 			audio1.play();
 		}
-		if(event.key == "L"){
+		if(event.key.toUpperCase() == "L"){
 			let audio1 = document.getElementById("d2.mp3");
 			audio1.play();
 		}
-		if(event.key == "Ñ"){
+		if(event.key.toUpperCase() == "Ñ"){
 			let audio1 = document.getElementById("e2.mp3");
 			audio1.play();
 		}
-		if(event.key == "Q"){
+		if(event.key.toUpperCase() == "Q"){
 			let audio1 = document.getElementById("g1.mp3");
 			audio1.play();
 		}
-		if(event.key == "W"){
+		if(event.key.toUpperCase() == "W"){
 			let audio1 = document.getElementById("a1.mp3");
 			audio1.play();
 		}
-		if(event.key == "E"){
+		if(event.key.toUpperCase() == "E"){
 			let audio1 = document.getElementById("b1.mp3");
 			audio1.play();
 		}
