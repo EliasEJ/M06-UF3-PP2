@@ -1,3 +1,9 @@
+//////////////////////////////////////////
+//// Elyass el Jerari i Paras Navlani ////
+//////////////////////////////////////////
+
+'use strict';
+
 // Obtenir botons amb JQuery
 const europaBoton = $('#europa');
 const espanyaBoton = $('#espanya');
@@ -18,92 +24,98 @@ catalunyaBoton.click(() => {
 
 
 
-// Selecciona todos los elementos 'path' dentro de SVG por su id
-let pathElements = document.querySelectorAll('svg path[id]');
+// Selecciona tots els elements 'path' dins de SVG pel seu id
+let elementsPath = document.querySelectorAll('svg path[id]');
 
-// Para cada elemento 'path'...
-pathElements.forEach(function(pathElement) {
-    // Crea un nuevo botón
+// Obtenir el nombre d'elements 'path'
+let numElementsPath = elementsPath.length;
+
+// Variable per comptar els encerts
+let numEncerts = 0;
+
+// Per cada element 'path' crea un botó amb un id un text i una classe
+elementsPath.forEach(function (pElement) {
     let nouBoto = document.createElement('button');
-    
-    // Asigna el id del elemento 'path' como el id del botón
-    nouBoto.id = pathElement.id;
 
-    // Asigna la clase "botonMapa" al botón
+    nouBoto.id = pElement.id;
+
     nouBoto.className = 'botonMapa btn btn-primary';
-    
-    // Asigna el id del elemento 'path' como el texto del botón
-    nouBoto.innerText = pathElement.id;
 
-    // Añadir un name al botón 
-    nouBoto.setAttribute('name', 'botonMapa' + pathElement.id);
+    nouBoto.innerText = pElement.id;
 
-    // Hace el botón arrastrable
+    nouBoto.setAttribute('name', 'botonMapa' + pElement.id);
+
+    // Fa que el botó sigui arrossegable
     nouBoto.setAttribute('draggable', 'true');
-    
-    // Inserta el botón en el div con id "botonesDrag"
+
+    // Afegeix el botó al div
     document.getElementById('botonesDrag').appendChild(nouBoto);
 });
 
 
 
-// Para cada elemento 'path'...
-pathElements.forEach(function(pathElement) {
-    let colorOriginal = pathElement.style.fill; // Guarda el color original
+elementsPath.forEach(function (pElement) {
+    // Guarda el color original del 'path' per restaurar-lo més tard
+    let colorOriginal = pElement.style.fill;
 
-    // Agrega un evento de escucha para el evento "dragenter"
-    pathElement.addEventListener('dragenter', function(event) {
-        // Si el color del 'path' no es verde, cambia el color a azul
-        if (pathElement.style.fill !== 'green' && pathElement.style.fill !== 'red') {
-            pathElement.style.fill = 'blue';
+    // Un eventListener que s'activa quan el ratolí entra al 'path'
+    pElement.addEventListener('dragenter', function (event) {
+        // Si el color del 'path' no es verd ni vermell canvia el color a blau
+        if (pElement.style.fill !== 'green' && pElement.style.fill !== 'red') {
+            pElement.style.fill = 'blue';
         }
     });
 
-    // Agrega un evento de escucha para el evento "dragleave"
-    pathElement.addEventListener('dragleave', function(event) {
-        // Si el color del 'path' no es verde, cambia el color al original
-        if (pathElement.style.fill !== 'green' && pathElement.style.fill !== 'red') {
-            pathElement.style.fill = colorOriginal;
+    // Aquest eventListener s'utilitza per restaurar el color original del 'path' que vam guardar ant
+    pElement.addEventListener('dragleave', function (event) {
+        // Si el color del 'path' no es verd ni vermell canvia el color al original
+        if (pElement.style.fill !== 'green' && pElement.style.fill !== 'red') {
+            pElement.style.fill = colorOriginal;
         }
     });
 
-    // Agrega un evento de escucha para el evento "drop"
-    pathElement.addEventListener('drop', function(event) {
-        // Evita el comportamiento predeterminado del navegador
+    // Afegeix un eventListener per al event "drop"
+    pElement.addEventListener('drop', function (event) {
         event.preventDefault();
 
-        // Si el color del 'path' es verde, no hagas nada
-        if (pathElement.style.fill === 'green') {
+        // Si el color del 'path' es verd no fa res
+        if (pElement.style.fill === 'green') {
             return;
         }
 
-        // Obtiene el id del botón arrastrado
-        let draggedButtonId = event.dataTransfer.getData('text');
+        // Obtenir el id del boto arrossegat
+        let botoArrosegat = event.dataTransfer.getData('text');
 
-        // Comprueba si el id del botón coincide con el id del 'path'
-        if (draggedButtonId === pathElement.id) {
-            // Cambia el color del 'path' a verde
-            pathElement.style.fill = 'green';
+        // Comprova si el id del boto arrossegat coincideix amb el id del 'path'
+        if (botoArrosegat === pElement.id) {
+            // Canvia el color del 'path' a verd
+            pElement.style.fill = 'green';
 
-            // Elimina el botón arrastrado por el name
-            document.getElementsByName('botonMapa' + draggedButtonId)[0].remove();
+            // Elimina el botó arrossegat
+            document.getElementsByName('botonMapa' + botoArrosegat)[0].remove();
+
+            // Augmenta el nombre d'encerts
+            numEncerts++;
+
+            // Si el nombre d'encerts coincideix amb el nombre d'elements 'path' mostra un missatge
+            if (numEncerts === numElementsPath) {
+                alert('Enhorabona! Has completat el mapa!');
+            }
         } else {
-            // Cambia el color del 'path' a rojo
-            pathElement.style.fill = 'red';
+            // Canvia el color del 'path' a vermell
+            pElement.style.fill = 'red';
         }
     });
 
-    // Agrega un evento de escucha para el evento "dragover" para permitir el drop
-    pathElement.addEventListener('dragover', function(event) {
+    // Afegir un eventListener per al event "dragover" 
+    pElement.addEventListener('dragover', function (event) {
         event.preventDefault();
     });
 });
 
-// Para cada botón...
-document.querySelectorAll('.botonMapa').forEach(function(button) {
-    // Agrega un evento de escucha para el evento "dragstart"
-    button.addEventListener('dragstart', function(event) {
-        // Establece el id del botón como la data del evento
+// Per cada botó amb la classe 'botonMapa' crea un eventListener per al event "dragstart"
+document.querySelectorAll('.botonMapa').forEach(function (button) {
+    button.addEventListener('dragstart', function (event) {
         event.dataTransfer.setData('text', event.target.id);
     });
 });
